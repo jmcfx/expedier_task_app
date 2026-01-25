@@ -63,7 +63,7 @@ class _OtpPageState extends State<OtpPage> {
 
             AppButton(
               onTap: () {
-                context.router.replace(
+                context.router.push(
                   VerificationSuccessRoute(
                     onContinue: () =>
                         context.router.replace(UserCredentialsRoute()),
