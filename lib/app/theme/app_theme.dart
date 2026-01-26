@@ -32,6 +32,7 @@ class AppTheme {
       secondary: AppColors.secondaryColorDE,
       onSecondaryContainer: AppColors.secondaryColorF1,
       onSecondary: AppColors.secondaryColorE4,
+      secondaryContainer: AppColors.primaryColorF6
     ),
   );
 
