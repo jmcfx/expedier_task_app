@@ -26,4 +26,10 @@ class AppTextStyle {
     fontSize: 14.sp,
     height: 1.r,
   );
+
+  static final TextStyle regular32 = GoogleFonts.poppins(
+    fontWeight: FontWeight.w400,
+    fontSize: 32.sp,
+    height: 1.1.r,
+  );
 }

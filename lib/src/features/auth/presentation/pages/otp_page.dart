@@ -6,6 +6,7 @@ import 'package:expedier_task_app/src/shared/pop.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pinput/pinput.dart';
 
 @RoutePage()
 class OtpPage extends StatefulWidget {
@@ -59,6 +60,26 @@ class _OtpPageState extends State<OtpPage> {
               ),
             ),
             SizedBox(height: 56.h),
+
+            /// Pin....
+            Form(
+              child: Pinput(
+                length: 5,
+                defaultPinTheme: PinTheme(
+                  padding: EdgeInsets.symmetric(vertical: 7.h),
+                  textStyle: theme.textTheme.labelLarge,
+                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.secondaryContainer,
+                    borderRadius: BorderRadius.circular(15).r,
+                    border: Border.all(
+                      width: 1.w,
+                      color: theme.colorScheme.primaryContainer,
+                    ),
+                  ),
+                ),
+              ),
+            ),
 
             SizedBox(height: 56.h),
 

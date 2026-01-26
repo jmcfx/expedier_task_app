@@ -32,7 +32,7 @@ class AppTheme {
       secondary: AppColors.secondaryColorDE,
       onSecondaryContainer: AppColors.secondaryColorF1,
       onSecondary: AppColors.secondaryColorE4,
-      secondaryContainer: AppColors.primaryColorF6
+      secondaryContainer: AppColors.primaryColorF6,
     ),
   );
 
@@ -49,11 +49,13 @@ class AppTheme {
     bodyMedium: AppTextStyle.regularText16.copyWith(
       fontSize: 24.sp,
       color: AppColors.textColor21,
-     
     ),
     headlineMedium: AppTextStyle.regularText16.copyWith(
       color: AppColors.primaryColor3C,
-       fontSize: 20.sp,
+      fontSize: 20.sp,
+    ),
+    labelLarge: AppTextStyle.regular32.copyWith(
+      color: AppColors.primaryColorC2,
     ),
   );
 }
