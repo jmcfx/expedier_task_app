@@ -74,10 +74,27 @@ class UserCredentialsPage extends HookWidget {
                     ),
                     SizedBox(height: 16.sp),
 
-                    /// Number ....
+                    /// Mobile  Number ....
                     StyledTextField(
                       text: "Mobile Number",
-                      hintText: "Enter Phone Number",
+                      contents: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          SizedBox(height: 16.sp),
+                          Row(
+                            spacing: 18.w,
+                            children: [
+                              Flexible(
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Enter Phone number",
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 16.sp),
 
@@ -91,7 +108,7 @@ class UserCredentialsPage extends HookWidget {
                       hintText: "Must be up to six characters ",
                     ),
                     SizedBox(height: 16.sp),
-
+                    
                     /// Confirm Password...
                     StyledTextField(
                       obscureText: isConfirmPasswordObscure.value,

@@ -46,7 +46,27 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: 38.h),
-                  StyledTextField(text: 'Email', hintText: 'email@gmail.com'),
+                  StyledTextField(
+                    text: "Email",
+                    contents: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        SizedBox(height: 16.sp),
+                        Row(
+                          spacing: 18.w,
+                          children: [
+                            Flexible(
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  hintText: "email@gamil.com",
+                                ),
+                              ),
+                            ),
+                          ], 
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 24.h),
                   StyledTextField(
                     text: 'Password',

@@ -7,17 +7,19 @@ class PreferenceChip extends StatelessWidget {
     required this.label,
     required this.horizontal,
     required this.isSelected,
+    this.onTap,
   });
 
   final String label;
   final double horizontal;
   final bool isSelected;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: isSelected
