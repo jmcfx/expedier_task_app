@@ -1,5 +1,7 @@
+import 'package:expedier_task_app/core/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class StyledTextField extends StatelessWidget {
   const StyledTextField({
@@ -7,11 +9,15 @@ class StyledTextField extends StatelessWidget {
     required this.text,
     this.hintText,
     this.contents,
+    this.onTap,
+    this.obscureText = true,
   });
 
   final String text;
   final String? hintText;
   final Widget? contents;
+  final VoidCallback? onTap;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,25 @@ class StyledTextField extends StatelessWidget {
           contents!
         else ...[
           SizedBox(height: 12.h),
-          TextFormField(decoration: InputDecoration(hintText: hintText)),
+          TextFormField(
+            obscureText: obscureText,
+            decoration: InputDecoration(
+              hintText: hintText,
+              suffixIconConstraints: BoxConstraints(
+                minWidth: 24.r,
+                minHeight: 24.r,
+              ),
+              suffixIcon: GestureDetector(
+                onTap: onTap,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 19.w),
+                  child: SvgPicture.asset(
+                    obscureText ? AppIcons.obscureTrue : AppIcons.obscureFalse,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ],
     );

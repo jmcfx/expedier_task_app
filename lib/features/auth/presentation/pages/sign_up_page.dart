@@ -4,7 +4,7 @@ import 'package:expedier_task_app/core/constants/app_icons.dart';
 
 import 'package:expedier_task_app/features/auth/presentation/widgets/styled_text_field.dart';
 import 'package:expedier_task_app/shared/app_button.dart';
-import 'package:expedier_task_app/features/auth/presentation/widgets/auth_switch_text.dart';
+import 'package:expedier_task_app/features/auth/presentation/widgets/account_switch_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -49,7 +49,7 @@ class SignUpPage extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: 24.h),
-                  AuthSwitchText(
+                  AccountSwitchText(
                     onTap: () {
                       context.router.push(LoginRoute());
                     },

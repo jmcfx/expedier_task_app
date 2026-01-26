@@ -3,7 +3,7 @@ import 'package:expedier_task_app/app/router/app_router.gr.dart';
 import 'package:expedier_task_app/core/constants/app_icons.dart';
 import 'package:expedier_task_app/features/auth/presentation/widgets/styled_text_field.dart';
 import 'package:expedier_task_app/shared/app_button.dart';
-import 'package:expedier_task_app/features/auth/presentation/widgets/auth_switch_text.dart';
+import 'package:expedier_task_app/features/auth/presentation/widgets/account_switch_text.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                   SizedBox(height: 24.h),
-                  AuthSwitchText(
+                  AccountSwitchText(
                     onTap: () {
                       context.router.push(SignUpRoute());
                     },

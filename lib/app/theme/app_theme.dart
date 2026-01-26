@@ -44,17 +44,15 @@ class AppTheme {
       color: AppColors.textColor42,
     ),
     displayMedium: AppTextStyle.semiBold14,
-    bodySmall: AppTextStyle.light.copyWith(
-     
-      color: AppColors.textColor42,
-    ),
+    bodySmall: AppTextStyle.light.copyWith(color: AppColors.textColor42),
     bodyMedium: AppTextStyle.regularText16.copyWith(
       fontSize: 24.sp,
       color: AppColors.textColor21,
+     
     ),
-    
   );
 }
+
 InputBorder _outLineBorderStyle() {
   return OutlineInputBorder(
     borderSide: BorderSide(color: AppColors.primaryColorF4, width: 1.r),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AuthSwitchText extends StatelessWidget {
-  const AuthSwitchText({
+class AccountSwitchText extends StatelessWidget {
+  const AccountSwitchText({
     super.key,
     required this.description,
     required this.text,

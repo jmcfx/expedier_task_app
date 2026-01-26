@@ -13,4 +13,6 @@ class AppIcons {
   static const String lockLight = "$baseIcon/lock_light.svg";
   static const String success = "$baseIcon/success.svg";
   static const String folder = "$baseIcon/folder.svg";
+  static const String obscureTrue = "$baseIcon/obscure_true.svg";
+  static const String obscureFalse = "$baseIcon/obscure_false.svg";
 }
