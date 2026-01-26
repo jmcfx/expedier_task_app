@@ -1,4 +1,4 @@
-import 'package:expedier_task_app/app/app.dart';
+import 'package:expedier_task_app/src/app/app.dart';
 
 import 'package:flutter/material.dart';
 
