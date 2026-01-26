@@ -28,7 +28,7 @@ class UserCredentialsPage extends HookWidget {
             Row(
               spacing: 16.w,
               children: [
-                Pop(),
+                Pop(onTap: () => context.router.push(SignUpRoute())),
                 Text(
                   "Let's begin the journey.",
                   style: theme.textTheme.titleSmall?.copyWith(
@@ -108,7 +108,7 @@ class UserCredentialsPage extends HookWidget {
                       hintText: "Must be up to six characters ",
                     ),
                     SizedBox(height: 16.sp),
-                    
+
                     /// Confirm Password...
                     StyledTextField(
                       obscureText: isConfirmPasswordObscure.value,

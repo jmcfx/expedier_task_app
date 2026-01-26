@@ -1,18 +1,17 @@
 import 'package:auto_route/auto_route.dart';
-
 import 'package:expedier_task_app/src/core/constants/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Pop extends StatelessWidget {
-  const Pop({super.key});
-
+  const Pop({super.key, this.onTap});
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onTap: () => context.router.pop(),
+      onTap: onTap ?? () => context.router.pop(),
       child: Row(
         mainAxisSize: .min,
         children: [

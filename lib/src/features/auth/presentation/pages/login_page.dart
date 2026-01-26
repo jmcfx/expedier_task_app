@@ -5,22 +5,20 @@ import 'package:expedier_task_app/src/core/constants/app_icons.dart';
 import 'package:expedier_task_app/src/features/auth/presentation/widgets/account_switch_text.dart';
 import 'package:expedier_task_app/src/features/auth/presentation/widgets/styled_text_field.dart';
 import 'package:expedier_task_app/src/shared/app_button.dart';
+import 'package:expedier_task_app/src/shared/bounce_wrapper.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()
-class LoginPage extends StatefulWidget {
+class LoginPage extends HookWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  @override
   Widget build(BuildContext context) {
+    final isPasswordVisible = useState(true);
     final theme = Theme.of(context);
     return Scaffold(
       body: Column(
@@ -62,13 +60,16 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                             ),
-                          ], 
+                          ],
                         ),
                       ],
                     ),
                   ),
                   SizedBox(height: 24.h),
                   StyledTextField(
+                    obscureText: isPasswordVisible.value,
+                    onTap: () =>
+                        isPasswordVisible.value = !isPasswordVisible.value,
                     text: 'Password',
                     hintText: 'email@gmail.com',
                   ),
@@ -91,30 +92,10 @@ class _LoginPageState extends State<LoginPage> {
                           context.router.push(HomeRoute());
                         },
                       ),
-                      GestureDetector(
+                      VerificationContainer(
                         onTap: () {
                           context.router.push(SelfieVerificationRoute());
                         },
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(
-                            vertical: 11.h,
-                            horizontal: 16.w,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15).r,
-                            border: Border.all(
-                              color: theme.colorScheme.primaryContainer,
-                              width: 2.w,
-                            ),
-                          ),
-                          child: SvgPicture.asset(
-                            AppIcons.faceID,
-                            fit: BoxFit.cover,
-                            width: 32.r,
-                            height: 32.r,
-                          ),
-                        ),
                       ),
                     ],
                   ),
@@ -131,6 +112,43 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class VerificationContainer extends StatelessWidget {
+  const VerificationContainer({super.key, this.onTap});
+
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return GestureDetector(
+      // onTap: () {
+      //   context.router.push(SelfieVerificationRoute());
+      // },
+      onTap: onTap,
+      child: BounceWrapper(
+        onTap: onTap,
+        child: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.symmetric(vertical: 11.h, horizontal: 16.w),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15).r,
+            border: Border.all(
+              color: theme.colorScheme.primaryContainer,
+              width: 2.w,
+            ),
+          ),
+          child: SvgPicture.asset(
+            AppIcons.faceID,
+            fit: BoxFit.cover,
+            width: 32.r,
+            height: 32.r,
+          ),
+        ),
       ),
     );
   }

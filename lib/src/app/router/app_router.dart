@@ -4,8 +4,10 @@ import 'package:expedier_task_app/src/app/router/app_router.gr.dart';
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
   @override
-  RouteType get defaultRouteType =>
-      RouteType.custom(transitionsBuilder: TransitionsBuilders.noTransition);
+  RouteType get defaultRouteType => RouteType.custom(
+    transitionsBuilder: TransitionsBuilders.fadeIn,
+    duration: Duration(milliseconds: 100),
+  );
 
   @override
   List<AutoRoute> get routes => [

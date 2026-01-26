@@ -54,6 +54,7 @@ class _OtpPageState extends State<OtpPage> {
                     text: "email@gmail.com",
                     style: theme.textTheme.bodySmall?.copyWith(
                       color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
@@ -65,15 +66,29 @@ class _OtpPageState extends State<OtpPage> {
             Form(
               child: Pinput(
                 length: 5,
-                defaultPinTheme: PinTheme(
-                  padding: EdgeInsets.symmetric(vertical: 7.h),
-                  textStyle: theme.textTheme.labelLarge,
-                  margin: EdgeInsets.symmetric(horizontal: 5.w),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                focusedPinTheme: PinTheme(
+                  width: 56.w,
+                  height: 56.h,
                   decoration: BoxDecoration(
                     color: theme.colorScheme.secondaryContainer,
                     borderRadius: BorderRadius.circular(15).r,
                     border: Border.all(
-                      width: 1.w,
+                      color: theme.colorScheme.primaryContainer,
+                      width: 1.5.r,
+                    ),
+                  ),
+                ),
+                defaultPinTheme: PinTheme(
+                  width: 56.w,
+                  height: 56.h,
+                  padding: EdgeInsets.symmetric(vertical: 7.h),
+                  textStyle: theme.textTheme.labelLarge,
+                  margin: EdgeInsets.zero,
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.secondaryContainer,
+                    borderRadius: BorderRadius.circular(15).r,
+                    border: Border.all(
                       color: theme.colorScheme.primaryContainer,
                     ),
                   ),
@@ -88,7 +103,7 @@ class _OtpPageState extends State<OtpPage> {
                 context.router.push(
                   VerificationSuccessRoute(
                     onContinue: () =>
-                        context.router.replace(UserCredentialsRoute()),
+                        context.router.push(UserCredentialsRoute()),
                   ),
                 );
               },
