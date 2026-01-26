@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:expedier_task_app/app/router/app_router.gr.dart';
 import 'package:expedier_task_app/core/enums/account_type.dart';
-
 import 'package:expedier_task_app/features/auth/presentation/widgets/account_switch_text.dart';
 import 'package:expedier_task_app/features/user_profile/presentation/widgets/account_type_content.dart';
 import 'package:expedier_task_app/shared/app_button.dart';
@@ -31,10 +30,7 @@ class UserAccountTypePage extends HookWidget {
                 Pop(),
                 Text(
                   "Choose account type",
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    color: theme.colorScheme.onPrimary,
-                    fontSize: 20.sp,
-                  ),
+                  style: theme.textTheme.headlineMedium,
                 ),
               ],
             ),
@@ -80,6 +76,7 @@ class UserAccountTypePage extends HookWidget {
                 isAccountTypeSelected: selectedType.value.isInternal,
               ),
             ),
+
             SizedBox(height: 16.h),
 
             /// New Immigrant / Student Account ..
@@ -98,7 +95,12 @@ class UserAccountTypePage extends HookWidget {
             ),
 
             SizedBox(height: 56.h),
-            AppButton(text: 'Continue'),
+
+            /// Continue Button
+            AppButton(
+              onTap: () => context.router.push(UserPreferencesRoute()),
+              text: 'Continue',
+            ),
             SizedBox(height: 24.h),
 
             ///switch to sign out ....

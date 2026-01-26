@@ -144,7 +144,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 16.5.w,
-            ).copyWith(bottom: 50.h),
+            ).copyWith(bottom: 55.h),
             //button
             child: AppButton(
               onTap: () {

@@ -50,6 +50,10 @@ class AppTheme {
       color: AppColors.textColor21,
      
     ),
+    headlineMedium: AppTextStyle.regularText16.copyWith(
+      color: AppColors.primaryColor3C,
+       fontSize: 20.sp,
+    ),
   );
 }
 
