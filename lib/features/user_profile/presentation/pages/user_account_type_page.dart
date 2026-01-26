@@ -3,6 +3,7 @@ import 'package:expedier_task_app/app/router/app_router.gr.dart';
 import 'package:expedier_task_app/core/enums/account_type.dart';
 
 import 'package:expedier_task_app/features/auth/presentation/widgets/account_switch_text.dart';
+import 'package:expedier_task_app/features/user_profile/presentation/widgets/account_type_content.dart';
 import 'package:expedier_task_app/shared/app_button.dart';
 import 'package:expedier_task_app/shared/custom_padding.dart';
 import 'package:expedier_task_app/shared/outline_container.dart';
@@ -45,21 +46,10 @@ class UserAccountTypePage extends HookWidget {
               onTap: () => selectedType.value = selectedType.value.isPersonal
                   ? AccountType.none
                   : AccountType.personal,
-              child: Column(
-                crossAxisAlignment: .stretch,
-                children: [
-                  Text(
-                    "Personal Account ",
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Text(
-                    "Personal accounts with super perks",
-                    style: theme.textTheme.bodySmall,
-                  ),
-                ],
+              child: AccountTypeContent(
+                tittle: "Personal Account",
+                description: "Personal accounts with super perks",
+                isAccountTypeSelected: selectedType.value.isPersonal,
               ),
             ),
             SizedBox(height: 16.h),
@@ -70,65 +60,48 @@ class UserAccountTypePage extends HookWidget {
               onTap: () => selectedType.value = selectedType.value.isBusiness
                   ? AccountType.none
                   : AccountType.business,
-              child: Column(
-                crossAxisAlignment: .stretch,
-                children: [
-                  Text(
-                    "Business Account ",
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Text(
-                    "For Businesses powered by extra perks",
-                    style: theme.textTheme.bodySmall,
-                  ),
-                ],
+              child: AccountTypeContent(
+                tittle: "Business Account",
+                description: "For Businesses powered by extra perks",
+                isAccountTypeSelected: selectedType.value.isBusiness,
               ),
             ),
             SizedBox(height: 16.h),
 
             /// Internal User...
             OutlineContainer(
-              child: Column(
-                crossAxisAlignment: .stretch,
-                children: [
-                  Text(
-                    "Internal User ",
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Text("Internal Users", style: theme.textTheme.bodySmall),
-                ],
+              isSelected: selectedType.value.isInternal,
+              onTap: () => selectedType.value = selectedType.value.isInternal
+                  ? AccountType.none
+                  : AccountType.internal,
+              child: AccountTypeContent(
+                tittle: "Internal Users",
+                description: "Internal Users",
+                isAccountTypeSelected: selectedType.value.isInternal,
               ),
             ),
             SizedBox(height: 16.h),
 
             /// New Immigrant / Student Account ..
             OutlineContainer(
-              child: Column(
-                crossAxisAlignment: .stretch,
-                children: [
-                  Text(
-                    "New Immigrant / Student Account",
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      fontSize: 14.sp,
-                    ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Text(
-                    "Great account for recent immigrations",
-                    style: theme.textTheme.bodySmall,
-                  ),
-                ],
+              isSelected: selectedType.value.isNewImmigrantOrStudent,
+              onTap: () => selectedType.value =
+                  selectedType.value.isNewImmigrantOrStudent
+                  ? AccountType.none
+                  : AccountType.newImmigrantOrStudent,
+              child: AccountTypeContent(
+                tittle: "New Immigrant / Student Account",
+                description: "Great account for recent immigrations",
+                isAccountTypeSelected:
+                    selectedType.value.isNewImmigrantOrStudent,
               ),
             ),
+
             SizedBox(height: 56.h),
             AppButton(text: 'Continue'),
             SizedBox(height: 24.h),
+
+            ///switch to sign out ....
             AccountSwitchText(
               onTap: () {
                 context.router.push(LoginRoute());

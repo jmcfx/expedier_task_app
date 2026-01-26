@@ -21,7 +21,7 @@ class OutlineContainer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: isSelected
-              ? Colors.blue
+              ? theme.colorScheme.primaryContainer
               : theme.colorScheme.onSecondaryContainer,
           borderRadius: BorderRadius.circular(15).r,
           border: Border.all(
