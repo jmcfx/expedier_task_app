@@ -10,78 +10,51 @@ import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/e
 import 'package:expedier_task_app/src/shared/app_button.dart';
 import 'package:expedier_task_app/src/shared/custom_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class OnboardingPage extends StatefulWidget {
+class OnboardingPage extends HookWidget {
   const OnboardingPage({super.key});
 
   @override
-  State<OnboardingPage> createState() => _OnboardingPageState();
-}
-
-class _OnboardingPageState extends State<OnboardingPage> {
-  late final PageController _controller;
-  int _currentPage = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = PageController();
-  }
-
-  /// Preload images safely (context is available here)
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    precacheImage(AssetImage(AppImage.onboard1), context);
-    precacheImage(AssetImage(AppImage.card), context);
-    precacheImage(AssetImage(AppImage.lastCard), context);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final controller = usePageController();
+    final currentPage = useState(0);
 
+    final theme = Theme.of(context);
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          //page View content...
           Flexible(
             child: Stack(
               children: [
                 PageView(
-                  controller: _controller,
-                  physics: const ClampingScrollPhysics(),
                   onPageChanged: (value) {
-                    setState(() => _currentPage = value);
+                    currentPage.value = value;
                   },
+                  controller: controller,
+                  physics: ClampingScrollPhysics(),
                   children: [
-                    /// Onboarding 1
+                    //onboarding1
                     Column(
                       children: [
                         CustomShaderMask(child: Image.asset(AppImage.onboard1)),
                         SizedBox(height: 53.h),
-                        const TittleText(
+                        TittleText(
                           text:
                               "Experience effortless currency exchange and fast Transaction",
                         ),
                         SizedBox(height: 16.h),
-                        const SubTittle(
+                        SubTittle(
                           text:
                               "Seamlessly convert currencies at the best rates with quick and secure transactions",
                         ),
                       ],
                     ),
-
-                    /// Onboarding 2
+                    //onboarding2
                     Column(
                       children: [
                         CustomShaderMask(
@@ -90,32 +63,31 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             child: Column(
                               children: [
                                 SizedBox(height: 74.h),
-                                const CardsAnimation(),
+                                CardsAnimation(),
                                 SizedBox(height: 50.h),
                               ],
                             ),
                           ),
                         ),
                         SizedBox(height: 53.h),
-                        const TittleText(text: "Card data security"),
+                        TittleText(text: "Card data security"),
                         SizedBox(height: 16.h),
-                        const SubTittle(
+                        SubTittle(
                           text:
                               "Experience peace of mind with our Secured and Trusted banking app.",
                         ),
                       ],
                     ),
-
-                    /// Onboarding 3
+                    //onboarding3
                     Padding(
                       padding: EdgeInsets.only(top: 110.h),
                       child: Column(
                         children: [
-                          const ExchangeRateAnimate(),
+                          ExchangeRateAnimate(),
                           SizedBox(height: 312.h),
-                          const TittleText(text: "Exchange Money"),
+                          TittleText(text: "Exchange Money"),
                           SizedBox(height: 16.h),
-                          const SubTittle(
+                          SubTittle(
                             text:
                                 "Enjoy excellent exchange rates for various currencies.",
                           ),
@@ -124,37 +96,36 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     ),
                   ],
                 ),
-
-                /// Skip button
+                //skip...
                 Positioned(
                   right: 17.w,
                   top: 63.h,
                   child: CustomSkip(
                     onTap: () {
-                      context.router.push(const LoginRoute());
+                      context.router.push(LoginRoute());
                     },
                   ),
                 ),
               ],
             ),
           ),
-
-          /// Page indicator
-          CustomSmoothPageIndicator(currentPage: _currentPage, pageCount: 3),
-
+          CustomSmoothPageIndicator(
+            currentPage: currentPage.value,
+            pageCount: 3,
+          ),
           SizedBox(height: 72.h),
-
-          /// Bottom buttons
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 16.5.w,
             ).copyWith(bottom: 55.h),
-            child: _currentPage == 2
-                ? Row(
+            child: Column(
+              children: [
+                if (currentPage.value == 2)
+                  Row(
                     children: [
                       Flexible(
                         child: AppButton(
-                          onTap: () => context.router.push(const LoginRoute()),
+                          onTap: () {},
                           text: "Log In",
                           fontColor: theme.colorScheme.primary,
                           horizontal: 0.w,
@@ -172,17 +143,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       ),
                     ],
                   )
-                : AppButton(
-                    text: 'Next',
+                else
+                  AppButton(
                     onTap: () {
-                      if (_currentPage < 2) {
-                        _controller.nextPage(
+                      if (currentPage.value < 2) {
+                        controller.nextPage(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.easeIn,
                         );
                       }
                     },
+                    text: 'Next',
                   ),
+              ],
+            ),
           ),
         ],
       ),

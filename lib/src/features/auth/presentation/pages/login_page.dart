@@ -4,8 +4,8 @@ import 'package:expedier_task_app/src/app/router/app_router.gr.dart';
 import 'package:expedier_task_app/src/core/constants/app_icons.dart';
 import 'package:expedier_task_app/src/features/auth/presentation/widgets/account_switch_text.dart';
 import 'package:expedier_task_app/src/features/auth/presentation/widgets/styled_text_field.dart';
+import 'package:expedier_task_app/src/features/auth/presentation/widgets/verfication_container.dart';
 import 'package:expedier_task_app/src/shared/app_button.dart';
-import 'package:expedier_task_app/src/shared/bounce_wrapper.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -86,12 +86,7 @@ class LoginPage extends HookWidget {
                   Row(
                     mainAxisAlignment: .spaceBetween,
                     children: [
-                      AppButton(
-                        text: 'Login',
-                        onTap: () {
-                          context.router.push(HomeRoute());
-                        },
-                      ),
+                      AppButton(text: 'Login', onTap: () {}),
                       VerificationContainer(
                         onTap: () {
                           context.router.push(SelfieVerificationRoute());
@@ -112,43 +107,6 @@ class LoginPage extends HookWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class VerificationContainer extends StatelessWidget {
-  const VerificationContainer({super.key, this.onTap});
-
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return GestureDetector(
-      // onTap: () {
-      //   context.router.push(SelfieVerificationRoute());
-      // },
-      onTap: onTap,
-      child: BounceWrapper(
-        onTap: onTap,
-        child: Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(vertical: 11.h, horizontal: 16.w),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15).r,
-            border: Border.all(
-              color: theme.colorScheme.primaryContainer,
-              width: 2.w,
-            ),
-          ),
-          child: SvgPicture.asset(
-            AppIcons.faceID,
-            fit: BoxFit.cover,
-            width: 32.r,
-            height: 32.r,
-          ),
-        ),
       ),
     );
   }

@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:expedier_task_app/src/app/router/app_router.gr.dart';
-
 import 'package:expedier_task_app/src/core/enums/user_profile_preference_type.dart';
 import 'package:expedier_task_app/src/core/extensions/user_profile_preference_type_x.dart';
 
@@ -206,10 +204,7 @@ class UserPreferencesPage extends HookWidget {
                   ),
 
                   SizedBox(height: 29.h),
-                  AppButton(
-                    onTap: () => context.router.push(HomeRoute()),
-                    text: "Get Started",
-                  ),
+                  AppButton(onTap: () {}, text: "Get Started"),
                 ],
               ),
             ),
