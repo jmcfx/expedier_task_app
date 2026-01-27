@@ -103,14 +103,15 @@ lib/
    │  ├─ router/
    │  │  ├─ app_router.dart
    │  │  └─ app_router.gr.dart
-   │  ├─ app.dart
-   │  └─ app_view.dart
+   │  ├─ themes/
+   │  ├─ app.dart/
+   │  └─ app_view.dart/
    │
    ├─ core/
    │  ├─ constants/
    │  ├─ enums/
-   │  ├─ extensions/
-   │  
+   │  └─ extensions/
+   │
    ├─ features/
    │  ├─ auth/
    │  │  └─ presentation/
@@ -135,7 +136,6 @@ lib/
    │
    ├─ shared/
    │  ├─ widgets/
-   │  ├─ themes/
    │  └─ extensions/
    │
    └─ main.dart
