@@ -17,6 +17,7 @@ class AppColors {
   static const secondaryColorF1 = Color(0xFFF1F1F1);
   static const secondaryColorE4 = Color(0xFFD7D9E4);
   static const secondaryColorEF = Color(0xFFe8ebef);
+  static const secondaryColorF4 = Color(0xFFDCE6F4);
 
   //text Color...
   static const textColor00 = Color(0xFF000000);

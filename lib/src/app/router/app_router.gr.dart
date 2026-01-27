@@ -84,18 +84,46 @@ class LoginRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.OnboardingPage]
-class OnboardingRoute extends _i12.PageRouteInfo<void> {
-  const OnboardingRoute({List<_i12.PageRouteInfo>? children})
-    : super(OnboardingRoute.name, initialChildren: children);
+class OnboardingRoute extends _i12.PageRouteInfo<OnboardingRouteArgs> {
+  OnboardingRoute({_i13.Key? key, List<_i12.PageRouteInfo>? children})
+    : super(
+        OnboardingRoute.name,
+        args: OnboardingRouteArgs(key: key),
+        initialChildren: children,
+      );
 
   static const String name = 'OnboardingRoute';
 
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i4.OnboardingPage();
+      final args = data.argsAs<OnboardingRouteArgs>(
+        orElse: () => const OnboardingRouteArgs(),
+      );
+      return _i4.OnboardingPage(key: args.key);
     },
   );
+}
+
+class OnboardingRouteArgs {
+  const OnboardingRouteArgs({this.key});
+
+  final _i13.Key? key;
+
+  @override
+  String toString() {
+    return 'OnboardingRouteArgs{key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! OnboardingRouteArgs) return false;
+    return key == other.key;
+  }
+
+  @override
+  int get hashCode => key.hashCode;
 }
 
 /// generated route for

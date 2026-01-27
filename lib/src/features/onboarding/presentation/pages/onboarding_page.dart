@@ -6,24 +6,21 @@ import 'package:expedier_task_app/src/features/auth/presentation/widgets/sub_tit
 import 'package:expedier_task_app/src/features/auth/presentation/widgets/tittle_text.dart';
 import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/custom_shader_mask.dart';
 import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/exchange_rate.dart';
-
 import 'package:expedier_task_app/src/shared/app_button.dart';
-
+import 'package:expedier_task_app/src/shared/smooth_scroll.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
-class OnboardingPage extends StatefulWidget {
+class OnboardingPage extends HookWidget {
   const OnboardingPage({super.key});
 
   @override
-  State<OnboardingPage> createState() => _OnboardingPageState();
-}
-
-class _OnboardingPageState extends State<OnboardingPage> {
-  @override
   Widget build(BuildContext context) {
+    final controller = usePageController();
+
     final theme = Theme.of(context);
     return Scaffold(
       body: Column(
@@ -34,6 +31,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: Stack(
               children: [
                 PageView(
+                  onPageChanged: (value) {},
+                  controller: controller,
                   physics: ClampingScrollPhysics(),
                   children: [
                     //onboarding1
@@ -77,13 +76,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     ),
                     //onboarding3
                     Padding(
-                      padding: EdgeInsets.only(
-                        top: 110.h
-                      ),
+                      padding: EdgeInsets.only(top: 110.h),
                       child: Column(
                         children: [
                           ExchangeRate(),
-                            SizedBox(height: 312.h),
+                          SizedBox(height: 312.h),
                           TittleText(text: "Exchange Money"),
                           SizedBox(height: 16.h),
                           SubTittle(
@@ -113,10 +110,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
               ],
             ),
           ),
-          //Todo Navigation dot
-          SizedBox(height: 18.h),
-          Container(height: 4.h),
-          SizedBox(height: 71.h),
+
+          CustomSmoothPageIndicator(currentPage: 0, pageCount: 3),
+          SizedBox(height: 70.h),
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 16.5.w,
