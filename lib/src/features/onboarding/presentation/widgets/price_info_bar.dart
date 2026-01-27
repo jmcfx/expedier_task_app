@@ -1,4 +1,3 @@
-
 import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/location_row.dart';
 import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/price_row.dart';
 import 'package:flutter/material.dart';
@@ -26,11 +25,20 @@ class PriceInfoBar extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 17.5.w),
+
       padding: EdgeInsets.symmetric(
         vertical: 15.h,
         horizontal: 21.w,
       ).copyWith(right: 30.w),
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 4),
+            blurRadius: 10,
+            spreadRadius: 0,
+            color: theme.colorScheme.secondary,
+          ),
+        ],
         color: theme.colorScheme.onSecondaryContainer,
         borderRadius: BorderRadius.circular(15.r),
         border: Border.all(width: 1.2.r, color: theme.colorScheme.secondary),

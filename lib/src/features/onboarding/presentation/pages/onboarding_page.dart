@@ -5,7 +5,8 @@ import 'package:expedier_task_app/src/core/constants/app_image.dart';
 import 'package:expedier_task_app/src/features/auth/presentation/widgets/sub_tittle.dart';
 import 'package:expedier_task_app/src/features/auth/presentation/widgets/tittle_text.dart';
 import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/custom_shader_mask.dart';
-import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/price_info_bar.dart';
+import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/exchange_rate.dart';
+
 import 'package:expedier_task_app/src/shared/app_button.dart';
 
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: Stack(
               children: [
                 PageView(
+                  physics: ClampingScrollPhysics(),
                   children: [
                     //onboarding1
                     Column(
@@ -75,40 +77,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     ),
                     //onboarding3
                     Padding(
-                      padding: EdgeInsets.symmetric().copyWith(top: 105.h),
+                      padding: EdgeInsets.only(
+                        top: 110.h
+                      ),
                       child: Column(
                         children: [
-                          Column(
-                            spacing: 25.h,
-                            children: [
-                              PriceInfoBar(
-                                country: 'CAD',
-                                countryImg: AppImage.cad,
-                                negativePrice: '76,36',
-                                positivePrice: '76,36',
-                                negativePriceImg: AppIcons.arrowDown,
-                                positivePriceImage: AppIcons.arrowUp,
-                              ),
-
-                              PriceInfoBar(
-                                country: 'NGN',
-                                countryImg: AppImage.ngn,
-                                negativePrice: '76,36',
-                                positivePrice: '76,36',
-                                negativePriceImg: AppIcons.arrowDown,
-                                positivePriceImage: AppIcons.arrowUp,
-                              ),
-                              PriceInfoBar(
-                                country: 'USD',
-                                countryImg: AppImage.usd,
-                                negativePrice: '76,36',
-                                positivePrice: '76,36',
-                                negativePriceImg: AppIcons.arrowDown,
-                                positivePriceImage: AppIcons.arrowUp,
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 118.h),
+                          ExchangeRate(),
+                            SizedBox(height: 312.h),
                           TittleText(text: "Exchange Money"),
                           SizedBox(height: 16.h),
                           SubTittle(

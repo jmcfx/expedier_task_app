@@ -26,7 +26,7 @@ class BounceWrapper extends HookWidget {
       ).animate(
         CurvedAnimation(
           parent: controller,
-          curve: Curves.easeInOut,
+          curve: Curves.bounceIn,
         ),
       ),
       [controller, scaleFactor],
