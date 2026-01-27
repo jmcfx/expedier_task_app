@@ -6,14 +6,14 @@ import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/p
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ExchangeRate extends StatefulWidget {
-  const ExchangeRate({super.key});
+class ExchangeRateAnimate extends StatefulWidget {
+  const ExchangeRateAnimate({super.key});
 
   @override
-  State<ExchangeRate> createState() => _ExchangeRateState();
+  State<ExchangeRateAnimate> createState() => _ExchangeRateAnimateState();
 }
 
-class _ExchangeRateState extends State<ExchangeRate>
+class _ExchangeRateAnimateState extends State<ExchangeRateAnimate>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
@@ -44,7 +44,7 @@ class _ExchangeRateState extends State<ExchangeRate>
         children: [
           // TOP
           Transform.rotate(
-            angle: Tween<double>(begin: 0, end: -math.pi / 60)
+            angle: Tween<double>(begin: 0, end: -math.pi / 60.r)
                 .animate(
                   CurvedAnimation(parent: _controller, curve: Curves.bounceOut),
                 )
@@ -65,7 +65,7 @@ class _ExchangeRateState extends State<ExchangeRate>
             left: 0,
             right: 0,
             child: Transform.rotate(
-              angle: Tween<double>(begin: 0, end: -math.pi / 40)
+              angle: Tween<double>(begin: 0, end: -math.pi / 30.r)
                   .animate(
                     CurvedAnimation(
                       parent: _controller,
@@ -90,7 +90,7 @@ class _ExchangeRateState extends State<ExchangeRate>
             left: 0,
             right: 0,
             child: Transform.rotate(
-              angle: Tween<double>(begin: 0, end: math.pi / 20)
+              angle: Tween<double>(begin: 0, end: math.pi / 15.r)
                   .animate(
                     CurvedAnimation(
                       parent: _controller,

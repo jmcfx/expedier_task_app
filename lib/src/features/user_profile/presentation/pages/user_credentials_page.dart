@@ -4,6 +4,7 @@ import 'package:expedier_task_app/src/features/auth/presentation/widgets/account
 import 'package:expedier_task_app/src/features/auth/presentation/widgets/styled_text_field.dart';
 import 'package:expedier_task_app/src/shared/app_button.dart';
 import 'package:expedier_task_app/src/shared/custom_padding.dart';
+import 'package:expedier_task_app/src/shared/phone_number_text_field.dart';
 import 'package:expedier_task_app/src/shared/pop.dart';
 
 import 'package:flutter/material.dart';
@@ -75,27 +76,7 @@ class UserCredentialsPage extends HookWidget {
                     SizedBox(height: 16.sp),
 
                     /// Mobile  Number ....
-                    StyledTextField(
-                      text: "Mobile Number",
-                      contents: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          SizedBox(height: 16.sp),
-                          Row(
-                            spacing: 18.w,
-                            children: [
-                              Flexible(
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    hintText: "Enter Phone number",
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                    MyWidget(),
                     SizedBox(height: 16.sp),
 
                     /// Password..
