@@ -113,20 +113,54 @@ class OnboardingPage extends HookWidget {
               ],
             ),
           ),
-
-          CustomSmoothPageIndicator(currentPage: currentPage.value, pageCount: 3),
-          SizedBox(height: 70.h),
+          CustomSmoothPageIndicator(
+            currentPage: currentPage.value,
+            pageCount: 3,
+          ),
+          SizedBox(height: 72.h),
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 16.5.w,
             ).copyWith(bottom: 55.h),
             //button
-            child: AppButton(
-              onTap: () {
-                context.router.push(LoginRoute());
-              },
-              text: 'Next',
-            ),
+            child: currentPage.value == 2
+                ? Row(
+                    children: [
+                      Flexible(
+                        child: AppButton(
+                          onTap: () {
+                            context.router.push(const LoginRoute());
+                          },
+                          text: "Log In",
+                          fontColor: theme.colorScheme.primary,
+                          horizontal: 0.w,
+                          color: theme.scaffoldBackgroundColor,
+                          border: Border.all(color: theme.primaryColor),
+                        ),
+                      ),
+                      SizedBox(width: 20.w),
+                      Flexible(
+                        child: AppButton(
+                          onTap: () {
+                            context.router.push(const SignUpRoute());
+                          },
+                          text: "Sign Up",
+                          horizontal: 0.w,
+                        ),
+                      ),
+                    ],
+                  )
+                : AppButton(
+                    onTap: () {
+                      if (currentPage.value < 2) {
+                        controller.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        );
+                      }
+                    },
+                    text: 'Next',
+                  ),
           ),
         ],
       ),
