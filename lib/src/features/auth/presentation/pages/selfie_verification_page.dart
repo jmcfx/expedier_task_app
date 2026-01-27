@@ -88,9 +88,7 @@ class _SelfieVerificationPageState extends State<SelfieVerificationPage> {
               text: 'Open Camera',
               onTap: () {
                 context.router.push(
-                  VerificationSuccessRoute(
-                    onContinue: () => context.router.push(HomeRoute()),
-                  ),
+                  VerificationSuccessRoute(onContinue: () {}),
                 );
               },
             ),
