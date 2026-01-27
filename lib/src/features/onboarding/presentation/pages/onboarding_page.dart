@@ -7,7 +7,7 @@ import 'package:expedier_task_app/src/features/auth/presentation/widgets/tittle_
 import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/custom_shader_mask.dart';
 import 'package:expedier_task_app/src/features/onboarding/presentation/widgets/exchange_rate.dart';
 import 'package:expedier_task_app/src/shared/app_button.dart';
-import 'package:expedier_task_app/src/shared/smooth_scroll.dart';
+import 'package:expedier_task_app/src/shared/custom_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,6 +20,7 @@ class OnboardingPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = usePageController();
+    final currentPage = useState(0);
 
     final theme = Theme.of(context);
     return Scaffold(
@@ -31,7 +32,9 @@ class OnboardingPage extends HookWidget {
             child: Stack(
               children: [
                 PageView(
-                  onPageChanged: (value) {},
+                  onPageChanged: (value) {
+                    currentPage.value = value;
+                  },
                   controller: controller,
                   physics: ClampingScrollPhysics(),
                   children: [
@@ -111,7 +114,7 @@ class OnboardingPage extends HookWidget {
             ),
           ),
 
-          CustomSmoothPageIndicator(currentPage: 0, pageCount: 3),
+          CustomSmoothPageIndicator(currentPage: currentPage.value, pageCount: 3),
           SizedBox(height: 70.h),
           Padding(
             padding: EdgeInsets.symmetric(

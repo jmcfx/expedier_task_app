@@ -13,13 +13,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.blue,
-        child: Column(
-         crossAxisAlignment: .stretch,
-          mainAxisAlignment: .center,
-          children: [Text("Hello",textAlign: TextAlign.center, )],
-        ),
+      body: Column(
+        crossAxisAlignment: .stretch,
+        mainAxisAlignment: .center,
+        children: [Text("Hello", textAlign: TextAlign.center)],
       ),
     );
   }

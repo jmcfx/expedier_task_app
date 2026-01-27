@@ -44,7 +44,7 @@ class _ExchangeRateState extends State<ExchangeRate>
         children: [
           // TOP
           Transform.rotate(
-            angle: Tween<double>(begin: 0, end: -math.pi / 40)
+            angle: Tween<double>(begin: 0, end: -math.pi / 60)
                 .animate(
                   CurvedAnimation(parent: _controller, curve: Curves.bounceOut),
                 )
