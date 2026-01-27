@@ -36,7 +36,7 @@ class _ExchangeRateAnimateState extends State<ExchangeRateAnimate>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: _controller,
+      animation: _controller, 
       builder: (context, child) => Stack(
         alignment: Alignment.center,
         clipBehavior: Clip.none,
