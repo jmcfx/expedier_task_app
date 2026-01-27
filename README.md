@@ -9,8 +9,13 @@ The project emphasizes clean **UI architecture**, smooth animations, responsive 
 
 ### Snippet 🧷
 
-## Getting Started
 
+https://github.com/user-attachments/assets/217ea1bb-4eec-4916-a0a1-72f871ac4a1a
+
+
+
+
+## Getting Started
 
 
 ## 📦 Installation
