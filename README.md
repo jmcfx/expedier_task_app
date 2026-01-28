@@ -1,7 +1,7 @@
 # Expedier Task App
 
 A Flutter-based fintech UI application focused on delivering a polished, production-quality user experience.
-The app showcases animated onboarding flows, authentication screens, and user profile interfaces, built entirely as UI flows.
+The app showcases animated onboarding flows, authentication screens, and user profile interfaces, with centralized Theming built entirely as UI flows.
 
 Navigation is handled using AutoRoute (Navigator 2.0) for declarative, scalable routing between screens.
 The project emphasizes clean **UI architecture**, smooth animations, responsive layouts, and well-structured navigation flows
